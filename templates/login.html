@@ -1,0 +1,27 @@
+{% extends "layout/master.html" %}
+{%block content%}
+<div class="card mt-5">
+    <div class="card-header">
+        登入
+    </div>
+    <div class="card-body">
+        <form class="was-validated" method="post" action="logingo">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control is-invalid" name="InputEmail" aria-describedby="emailHelp" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">密碼</label>
+                <input type="password" class="form-control is-invalid" name="InputPassword" required>
+                {% if notMatch %}
+                <div class="invalid-feedback">
+                    email或密碼錯誤
+                </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">登入</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

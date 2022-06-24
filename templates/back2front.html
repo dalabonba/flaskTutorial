@@ -1,0 +1,23 @@
+<html>
+    <head>
+      <title>flask後端送前端</title>
+    </head>
+    <body>
+      <h1>flask後端送前端</h1>
+      <div>
+        <h2>我的名字 >>> {{name}}</h2>
+        <table>
+          <tr>
+            {% for i in columns %}
+            <th>{{i}}</th>
+            {% endfor %}
+          </tr>
+          <tr>
+            {% for i in data %}
+            <td>{{i}}</td>
+            {% endfor %}
+          </tr>
+        </table>
+      </div>
+    </body>
+</html>

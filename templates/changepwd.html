@@ -1,0 +1,42 @@
+{% extends "layout/master.html" %}
+{%block content%}
+<div class="card mt-5">
+    <div class="card-header">
+        更改密碼
+    </div>
+    <div class="card-body">
+        <form class="was-validated" method="post" action="changepwd">
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">舊密碼</label>
+                <input type="password" class="form-control is-invalid" name="InputOldPassword" required>
+                {% if oldPwdNotMatch %}
+                <div class="invalid-feedback">
+                    舊密碼錯誤
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">新密碼</label>
+                <input type="password" class="form-control is-invalid" name="InputPassword" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">密碼確認</label>
+                <input type="password" class="form-control is-invalid" name="InputPasswordCheck" required>
+                {% if pwdNotMatch %}
+                <div class="invalid-feedback">
+                    輸入的兩個密碼不同
+                </div>
+                {% endif %}
+            </div>
+            {% if changePwdDone %}
+            <div class="alert alert-success" role="alert">
+                密碼更改成功
+            </div>
+            {% endif %}
+            <button type="submit" class="btn btn-primary">確認</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

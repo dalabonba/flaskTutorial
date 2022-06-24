@@ -1,0 +1,44 @@
+{% extends "layout/master.html" %}
+{%block content%}
+<div class="card mt-5">
+    <div class="card-header">
+        註冊
+    </div>
+    <div class="card-body">
+        <form class="was-validated" method="post" action="signup">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control is-invalid" name="InputEmail" aria-describedby="emailHelp" required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                {% if sameEmail %}
+                <div class="invalid-feedback">
+                    此email已註冊過
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">密碼</label>
+                <input type="password" class="form-control is-invalid" name="InputPassword" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">密碼確認</label>
+                <input type="password" class="form-control is-invalid" name="InputPasswordCheck" required>
+                {% if pwdNotMatch %}
+                <div class="invalid-feedback">
+                    輸入的兩個密碼不同
+                </div>
+                {% endif %}
+            </div>
+
+            {% if signupDone %}
+            <div class="alert alert-success" role="alert">
+                {{email}}成功註冊
+            </div>
+            {% endif %}
+            <button type="submit" class="btn btn-primary">註冊</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

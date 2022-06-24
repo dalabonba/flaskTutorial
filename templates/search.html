@@ -1,0 +1,26 @@
+{% extends "layout/master.html" %}
+
+{%block content%}
+<h1>搜尋結果</h1>
+<div class="row">
+    {% for i in range(resultCount) %}
+    <div class="col-3 mb-5">
+        <div class="card" style="width: 18rem;">
+            <img src="static/img/goods/{{goodImg[i]}}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{goodName[i]}}</h5>
+                <p class="card-text">{{goodName[i]}}介紹:blalblablablablablabla</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">價格:{{goodPrice[i]}}</li>
+            </ul>
+            {% if session.get('email')==None %}
+            <a href="{{url_for('cartAdd',name=goodName[i])}}" class="btn btn-primary" onclick="display_alert('請先登入')">加入購物車</a>
+            {% else %}
+            <a href="{{url_for('cartAdd',name=goodName[i])}}" class="btn btn-primary" onclick="display_alert('已加入購物車')">加入購物車</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

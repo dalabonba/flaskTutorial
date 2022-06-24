@@ -1,0 +1,43 @@
+<nav class="sticky-top navbar navbar-expand-lg navbar-light bg-warning">
+    <div class="container">
+
+        <a class="navbar-brand" href="{{url_for('home')}}">燒瓶購物網</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if session.get('email')==None %}
+                <li class="nav-item me-2">
+                    <a class="btn btn-outline-danger" href="{{url_for('signup')}}">註冊</a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="btn btn-outline-info" href="{{url_for('loginpage')}}">登入</a>
+                </li>
+                {% else %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        {{session.get('email')}}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{url_for('changepwd')}}">更改密碼</a></li>
+                        <li><a class="dropdown-item" href="{{url_for('cartpage')}}">購物車</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{{url_for('logout')}}">登出</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+            <form class="d-flex" method="get" action="search">
+                <input class="form-control me-2" type="search" placeholder="在找甚麼商品?" aria-label="Search" name="InputKeyword">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
